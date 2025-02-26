@@ -1,0 +1,5 @@
+<form method="post" class="d-inline-block" action="{{ path('app_category_delete', {'id': category.id}) }}"
+ onsubmit="return confirm('Êtes-vous sûr de vouloir le supprimé ?');">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ category.id) }}">
+    <button class="btn">{{ ux_icon('lucide:trash-2', {class : 'text-danger icon'}) }}</button>
+</form>

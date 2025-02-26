@@ -1,0 +1,60 @@
+{% extends "base.html.twig" %}
+
+{% block h1 %}Ajouter un produit{% endblock %}
+
+{% block body %}
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ path('admin') }}">Back office</a></li>
+            <li class="breadcrumb-item"><a href="{{ path('app_product_index') }}">Gestion des produits</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Ajouter</li>
+        </ol>
+    </nav>
+    
+    {#
+    
+    En twig, il existe deux façons d'afficher les formulaire de symfony
+
+    1- le fonction twig form() qui permet d'afficher le formulaire en entier
+        {{ form(formProduct) }}
+
+    2- un ensemble de fonctions twig
+       form_start()
+       form_end()
+
+
+       form_row() arguement : form.element
+       form_row() se compose de form_label + form_errors() + form_widget() + form_help()
+    
+    #}
+
+    {#
+      <input type="submit" value="Ajouter" class="btn btn-primary w-100 mt-3">
+    #}
+
+
+   {{form_start(formProduct)}} {# <form>#}
+
+     {{form_row(formProduct.title)}}
+     {{form_row(formProduct.price)}}
+     {{form_row(formProduct.description)}}
+
+
+     {#
+      {{form_help(formProduct.title)}}
+      {{form_errors(formProduct.title)}}
+      {{form_widget(formProduct.title)}}
+      {{form_label(formProduct.title)}}
+     #}
+     
+      {{ form_rest(formProduct) }}
+      
+    <input type="submit" value="Ajouter" class="btn btn-primary w-100 mt-3">
+
+
+
+   {{form_end(formProduct)}} {# </form> #}
+
+
+{% endblock %}
